@@ -19,32 +19,23 @@ export function AppComponent(){
         }
         getTrendingGifts();
     },[]);
-    const searchStyle = {
-        float:'right'
-    };
-    const containerStyle = {
-        
-    };
-    const childStyle = {
-        textAlign: 'center',
-        border: '5px solid black' 
-    };
+   
     return (
         <div>
-            <div style={searchStyle}>
+            <div style={{float:'right'}}>
                 <form>
                     <input type="text" name="Search" placeholder="search GIF"></input>
                     <button type="submit">Search</button>
                 </form>
             </div>
-            <div style={containerStyle}>
+            <div>
                 <h1>{currentDisplay}</h1>
-                <div style={childStyle}>
+                <div style={{textAlign: 'center', border: '5px solid black'}}>
                     {
                         trendingGifts?.map((data)=>{
                             return(
                                 //<iframe key={link.id} src={link.embed_url}/>
-                                <GiftCardComponent key={data.id} link = {data.images?.original?.url}></GiftCardComponent>
+                                <GiftCardComponent key={data.id} link = {data.images?.original?.url} size = {trendingGifts.length}></GiftCardComponent>
                             )
                         })
                     }
