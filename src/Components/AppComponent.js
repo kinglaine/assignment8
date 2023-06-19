@@ -28,10 +28,9 @@ export function AppComponent(){
                 <h1>{currentDisplayName}</h1>
                 <div style={{textAlign: 'center', border: '5px solid black'}}>
                     {
-                        currentDisplay?.map((data)=>{
+                        currentDisplay?.filter((data, index, array) => array.findIndex(item => item.id === data.id) === index).map((data)=>{
                             return(
-                                //<iframe key={link.id} src={link.embed_url}/>
-                                <GiftCardComponent key={data.id} link = {data.images?.original?.url} size = {currentDisplay.length}></GiftCardComponent>
+                                <GiftCardComponent key={data.id} link = {data?.images?.original?.url}></GiftCardComponent>
                             )
                         })
                     }
